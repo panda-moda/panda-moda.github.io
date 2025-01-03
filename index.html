@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        /* Reset CSS básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo del cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to right, #2a4983, #99baf2);
+            color: #333;
+        }
+
+        /* Encabezado con degradado azul y título a la izquierda */
+        header {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #ffffff;
+            padding: 1rem 2rem;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Secciones */
+        main {
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Imágenes */
+        .section-images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+
+        .section-images img {
+            max-width: 30%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        /* Estilos de pie de página */
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+        }
+
+        /*imagen grande principal*/
+        .main-image {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            text-align: center;
+        }
+
+        .main-image img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            /* Tamaño más grande */
+            font-weight: bold;
+            /* Texto más grueso */
+            color: #fff;
+            /* Color blanco */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark"
+            style="background: linear-gradient(to right, #2f72f9, #2637f9);">
+            <a class="navbar-brand">Inteligencia Artificial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#que-es"><i class="fa fa-question-circle"></i> ¿Qué es?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aplicaciones"><i class="fa fa-cogs"></i> Aplicaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impacto"><i class="fa fa-globe"></i> Impacto en la Sociedad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vida-cotidiana"><i class="fa fa-home"></i> IA en la Vida
+                            Cotidiana</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#alexa"><i class="fa fa-microphone"></i> Alexa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="alexa01.html"><i class="fa fa-microphone"></i> Simulador</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Imagen principal con texto superpuesto -->
+    <div class="main-image">
+        <img src="img/ia3.jpg" alt="Inteligencia Artificial">
+        <div class="text-overlay">INTELIGENCIA ARTIFICIAL</div>
+    </div>
+    <main>
+        <section id="que-es">
+            <h2>¿Qué es la IA?</h2>
+            <p>La Inteligencia Artificial (IA) es la simulación de procesos de inteligencia humana por parte de sistemas
+                informáticos. Estos procesos incluyen el aprendizaje (la adquisición de información y reglas para
+                usarla), el razonamiento (usar reglas para alcanzar conclusiones aproximadas o definidas) y la
+                autocorrección. Las tecnologías específicas de IA incluyen sistemas expertos, procesamiento del lenguaje
+                natural (NLP), reconocimiento de voz y visión artificial.</p>
+            <div class="section-images">
+                <img src="img/ia01.jpeg" alt="Imagen IA 1">
+                <img src="img/ia02.jpeg" alt="Imagen IA 2">
+                <img src="img/iaportada.jpeg" alt="Imagen IA 3">
+            </div>
+        </section>
+
+        <section id="aplicaciones">
+            <h2>Aplicaciones de la IA</h2>
+            <p>La IA se utiliza en una variedad de campos como la medicina (diagnóstico y tratamiento), la finanza
+                (análisis predictivo y automatización), el transporte (vehículos autónomos), la industria (robots de
+                fabricación), y muchos más. En el comercio, los sistemas de recomendación impulsados por IA mejoran la
+                experiencia del cliente al sugerir productos basados en sus preferencias.</p>
+            <div class="section-images">
+                <img src="img/ia04.jpeg" alt="Imagen Aplicaciones 1">
+                <img src="img/ia05.jpeg" alt="Imagen Aplicaciones 2">
+                <img src="img/ia06.jpeg" alt="Imagen Aplicaciones 3">
+            </div>
+        </section>
+
+        <section id="impacto">
+            <h2>Impacto en la Sociedad</h2>
+            <p>La IA tiene un impacto profundo en la forma en que vivimos y trabajamos. Puede aumentar la eficiencia y
+                la productividad, pero también plantea preocupaciones sobre la privacidad, el desempleo y la ética. El
+                debate sobre el impacto de la IA en la sociedad incluye cuestiones sobre la responsabilidad en la toma
+                de decisiones y la necesidad de regulaciones para asegurar su uso ético y justo.</p>
+            <div class="section-images">
+                <img src="img/ia07.jpg" alt="Imagen Impacto 1">
+                <img src="img/ia08.jpg" alt="Imagen Impacto 2">
+                <img src="img/ia09.jpg" alt="Imagen Impacto 3">
+            </div>
+        </section>
+
+        <section id="vida-cotidiana">
+            <h2>IA en la Vida Cotidiana</h2>
+            <p>Desde asistentes virtuales como Siri y Google Assistant hasta recomendaciones personalizadas en
+                plataformas de streaming y compras, la IA está presente en muchos aspectos de nuestra vida diaria. Los
+                algoritmos de IA ayudan a mejorar la eficiencia en la gestión del tiempo, la organización de tareas y la
+                personalización de la experiencia del usuario en aplicaciones y servicios online.</p>
+            <div class="section-images">
+                <img src="img/ia010.jpeg" alt="Imagen Vida Cotidiana 1">
+                <img src="img/ia011.jpeg" alt="Imagen Vida Cotidiana 2">
+                <img src="img/ia012.jpg" alt="Imagen Vida Cotidiana 3">
+            </div>
+        </section>
+
+        <section id="alexa">
+            <h2>Alexa</h2>
+            <p>Alexa es un asistente virtual desarrollado por Amazon que utiliza IA para responder preguntas, reproducir
+                música, configurar alarmas, controlar dispositivos inteligentes del hogar y mucho más. Alexa se activa
+                con comandos de voz y aprende continuamente de las interacciones con los usuarios para mejorar sus
+                respuestas y capacidades.</p>
+            <div class="section-images">
+                <img src="img/alexa000.jpg" alt="Imagen Alexa 1">
+                <img src="img/alexa0001.jpeg" alt="Imagen Alexa 2">
+                <img src="img/alexa0003.jpeg" alt="Imagen Alexa 3">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 - Página sobre Inteligencia Artificial &copy; Derechos Reservados Luz Silupú</p>
+    </footer>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

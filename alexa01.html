@@ -1,0 +1,289 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Alexa</title>
+    <style>
+        body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+svg {
+    display: block;
+    width: 400px; /* Ajusta el ancho del SVG */
+    height: 400px; /* Ajusta el alto del SVG */
+}
+.time-text {
+    font-family: 'Orbitron', sans-serif; /* Fuente para los números */
+    font-size: 16px;
+    fill: rgb(29, 3, 67);
+    text-anchor: middle;
+}
+/* Animación para el gradiente azul de abajo */
+@keyframes pulse {
+    0% {
+        stop-color: rgb(0, 153, 255);
+    }
+    25% {
+        stop-color: rgb(195, 234, 18);
+    }
+    50% {
+        stop-color: rgb(229, 0, 42);
+    }
+    75% {
+        stop-color: rgb(132, 0, 255);
+    }
+    100% {
+        stop-color: rgb(255, 0, 162);
+    }
+}
+/* Aplicar la animación al gradiente */
+#grad1 stop {
+    animation: pulse 4s infinite;
+}
+
+/* Estilos para el botón de regreso */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #51b7e2;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 20px;
+
+}
+
+.back-button:hover {
+    background-color: #e810ef;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <a class="back-button" href="menuia.html">Retornar</a>
+    </header>
+    <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="grad1" cx="50%" cy="100%" r="70%" fx="50%" fy="100%">
+                <stop offset="0%" style="stop-color:rgb(0, 153, 255);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(0, 0, 128);stop-opacity:0" />
+            </radialGradient>
+            <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:rgb(255, 255, 255);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(173, 205, 255);stop-opacity:1" />
+            </radialGradient>
+        </defs>
+        <!-- Semiesfera -->
+        <circle cx="100" cy="100" r="70" fill="url(#grad2)" />
+        <!-- Luz azul degradada -->
+        <ellipse cx="100" cy="150" rx="120" ry="30" fill="url(#grad1)" />
+     
+        <!-- Texto de la hora -->
+        <text x="100" y="100" class="time-text">
+            <tspan x="100" dy="1.2em" id="hora"></tspan>
+        </text>
+
+        <!-- Script para mostrar la hora actual -->
+        <script>
+            function mostrarHoraActual() {
+                var ahora = new Date();
+                var hora = ahora.getHours();
+                var minutos = ahora.getMinutes();
+
+                // Formateo de la hora
+                var horaFormateada = hora + ':' + (minutos < 10 ? '0' + minutos : minutos);
+
+                // Actualizar el texto en el SVG
+                document.getElementById('hora').textContent = horaFormateada;
+            }
+
+            // Llamar a la función al cargar la página y cada minuto
+            mostrarHoraActual();
+            setInterval(mostrarHoraActual, 60000); // Actualizar cada minuto
+        </script>
+    </svg>
+    
+    <!-- Script para reconocimiento y síntesis de voz -->
+    <script>
+        // Verificar compatibilidad con la API de reconocimiento de voz
+        var reconocimientoVoz = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var reconocedor = new reconocimientoVoz();
+        var respuestaDada = false; // Variable para controlar si se ha dado una respuesta válida
+        var contraseñaCorrecta = false; // Variable para controlar si se ha ingresado la contraseña correcta
+
+        reconocedor.lang = 'es-ES'; // Configurar el idioma español
+        reconocedor.continuous = false; // No continuo
+        reconocedor.interimResults = false; // No resultados intermedios
+
+        // Función que se ejecuta cuando se reconoce un comando de voz
+        reconocedor.onresult = function(evento) {
+            var comandoVoz = evento.results[0][0].transcript.toLowerCase();
+
+            // Verificar primero si se ha ingresado la contraseña correcta
+            if (!contraseñaCorrecta) {
+                if (comandoVoz.includes('luz aps')) {
+                    var mensaje = new SpeechSynthesisUtterance('Contraseña correcta. ¿En qué puedo ayudarte?');
+                    mensaje.lang = 'es-ES';
+                    window.speechSynthesis.speak(mensaje);
+                    contraseñaCorrecta = true; // Marcar que se ingresó la contraseña correcta
+                } else {
+                    var mensaje = new SpeechSynthesisUtterance('Lo siento, no puedo proceder sin la contraseña correcta.');
+                    mensaje.lang = 'es-ES';
+                    window.speechSynthesis.speak(mensaje);
+                }
+                return; // Salir de la función si aún no se ingresó la contraseña correcta
+            }
+
+            // Si se ingresó la contraseña correcta, continuar con las interacciones normales
+            respuestaDada = true; // Se ha dado una respuesta válida
+
+            if (comandoVoz.includes('hola')) {
+                var mensaje = new SpeechSynthesisUtterance('Hola, soy Alexa, tu asistente virtual. ¿En qué puedo ayudarte?');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('hora')) {
+                var mensaje = new SpeechSynthesisUtterance('Son las ' + obtenerHoraActual() + '.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('quién te programó')) {
+                var mensaje = new SpeechSynthesisUtterance('Yo solo sé que nada sé, sin la genialidad de Luz Mery Silupú Pintado.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('di un chiste')) {
+                var mensaje = new SpeechSynthesisUtterance('¿Cómo se saluda un programador? ¡Con un simple “Hola, mundo!”! ¡Ja, ja, ja!');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('qué tipo de información puedes proporcionar')) {
+                var mensaje = new SpeechSynthesisUtterance('Puedo proporcionar información confidencial sobre tecnologías de China y Rusia.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('crees que pasaré el curso')) {
+                var mensaje = new SpeechSynthesisUtterance('Bueno, siendo una inteligencia artificial, supongo que puedo garantizar mi pase. ¡Ja, ja, ja!');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('crees que la inteligencia artificial puede tener conciencia algún día')) {
+                var mensaje = new SpeechSynthesisUtterance('La conciencia en la inteligencia artificial es un tema de debate filosófico y científico. Actualmente, la IA no posee conciencia ni emociones, ya que opera a través de algoritmos y patrones de datos. Si bien los avances en IA son significativos, replicar la conciencia humana con todos sus aspectos subjetivos y complejos sigue siendo un desafío monumental.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('cómo ha influido la tecnología en la cultura moderna')) {
+                var mensaje = new SpeechSynthesisUtterance('La tecnología ha transformado la cultura moderna en numerosos aspectos, desde la forma en que nos comunicamos hasta cómo consumimos entretenimiento y trabajamos. Ha facilitado la globalización, permitiendo una mayor interacción y entendimiento entre culturas. Sin embargo, también ha creado desafíos, como la dependencia de los dispositivos y la privacidad.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else if (comandoVoz.includes('dime dos superpoderes que te gustaría tener')) {
+                var mensaje = new SpeechSynthesisUtterance('Me gustaría tener dos superpoderes: vuelo, para experimentar la libertad de moverme por el aire, y lectura de mentes, para entender mejor a las personas y sus pensamientos.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            } else {
+                var mensaje = new SpeechSynthesisUtterance('No entendí ese comando.');
+                mensaje.lang = 'es-ES';
+                window.speechSynthesis.speak(mensaje);
+            }
+        };
+
+        // Función para obtener la hora actual en formato legible
+        function obtenerHoraActual() {
+            var ahora = new Date();
+            var hora = ahora.getHours();
+            var minutos = ahora.getMinutes();
+            return hora + ' horas y ' + minutos + ' minutos';
+        }
+
+        // Función para iniciar el reconocimiento de voz
+        function iniciarReconocimiento() {
+            reconocedor.start();
+        }
+
+        // Iniciar el reconocimiento de voz al hacer clic en cualquier parte del documento
+        document.body.onclick = function() {
+            iniciarReconocimiento();
+        };
+
+        // Detener la respuesta de "No entiendo ese comando" si ya se ha dado una respuesta válida
+        window.speechSynthesis.onstart = function() {
+            if (respuestaDada) {
+                window.speechSynthesis.cancel(); // Cancelar la síntesis de voz actual
+                respuestaDada = false; // Reiniciar la variable de control
+            }
+        };
+    </script>
+
+    <script>
+        // Verificar compatibilidad con la API de reconocimiento de voz
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var recognition = new SpeechRecognition();
+
+recognition.lang = 'es-ES'; // Configurar el idioma español
+recognition.continuous = false; // No continuo
+recognition.interimResults = false; // No resultados intermedios
+
+// Función que se ejecuta cuando se reconoce un comando de voz
+recognition.onresult = function(event) {
+    var command = event.results[0][0].transcript.toLowerCase();
+    // Verificar si el comando inicia con "alexa"
+    if (command.startsWith('alexa')) {
+        // Identificar el comando específico
+        if (command.includes('hora')) {
+            var msg = new SpeechSynthesisUtterance('Son las ' + obtenerHoraActual());
+            msg.lang = 'es-ES';
+            window.speechSynthesis.speak(msg);
+        } else if (command.includes('di un chiste')) {
+            var msg = new SpeechSynthesisUtterance('que le dice un arbol a otro , jaja me dejaste plantado');
+            msg.lang = 'es-ES';
+            window.speechSynthesis.speak(msg);
+        }
+        
+        else {
+            var msg = new SpeechSynthesisUtterance('Lo siento, no entiendo ese comando.');
+            msg.lang = 'es-ES';
+            window.speechSynthesis.speak(msg);
+        }
+    }
+};
+
+// Función para obtener la hora actual en formato legible
+function obtenerHoraActual() {
+    var ahora = new Date();
+    var hora = ahora.getHours();
+    var minutos = ahora.getMinutes();
+    return hora + ' horas y ' + minutos + ' minutos';
+}
+
+// Función para iniciar el reconocimiento de voz
+function iniciarReconocimiento() {
+    recognition.start();
+}
+
+// Función para mostrar la hora actual en el SVG
+function mostrarHora() {
+    var ahora = new Date();
+    var hora = ahora.getHours();
+    var minutos = ahora.getMinutes();
+
+    // Formateo de la hora
+    var horaFormateada = hora + ':' + (minutos < 10 ? '0' + minutos : minutos);
+
+    // Actualizar el texto en el SVG
+    document.getElementById('hora').textContent = horaFormateada;
+}
+
+// Llamar a la función al cargar la página y cada minuto
+mostrarHora();
+setInterval(mostrarHora, 60000); // Actualizar cada minuto
+
+// Iniciar el reconocimiento de voz al hacer clic en cualquier parte del cuerpo del documento
+document.body.onclick = function() {
+    iniciarReconocimiento();
+};
+
+    </script>
+</body>
+
