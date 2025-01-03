@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini&display=swap" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Jaini", system-ui;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* para la cabecera*/
+        .top-bar {
+            background-color: #F500E6;
+            color: white;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        .top-bar .contact-info {
+            display: flex;
+            align-items: center;
+        }
+        .top-bar .contact-info i {
+            margin-right: 5px;
+        }
+        .top-bar .right-menu {
+            display: flex;
+            align-items: center;
+        }
+        .top-bar .right-menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .top-bar .right-menu .dropdown-container {
+            position: relative;
+        }
+        .top-bar .right-menu .dropdown-container .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #3c2a2a;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            margin-top: 5px;
+        }
+        .top-bar .right-menu .dropdown-container:hover .dropdown {
+            display: block;
+        }
+        .top-bar .right-menu .dropdown-container .dropdown a {
+            padding: 10px 15px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .top-bar .right-menu .dropdown-container .dropdown a:hover {
+            background-color: #7f4c4c;
+        }
+
+        
+        header {
+            background-color: #ffffff;
+            color: #130712;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+        .logo img {
+            height: 120px; /* Ajusta la altura del logo */
+            width: 180px; /* Mantén la proporción de la imagen */
+        }
+
+        /*para el menu despleglable*/
+        nav {
+            background-color: #ffffff;
+            color: #5a2e2e;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a {
+            color: #F500E6;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            position: relative;
+        }
+        nav a:hover {
+            background-color: #f5f5f5;
+        }
+        nav .main-link:after {
+            content: "\f0d7"; /* Font Awesome down arrow icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+        }
+        nav .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 200px; /* Adjust width as needed */
+        }
+        nav .dropdown a {
+            padding: 12px 16px;
+            display: block;
+            color: #5a2e2e;
+            text-decoration: none;
+        }
+        nav .dropdown a:hover {
+            background-color: #f5f5f5;
+        }
+        nav .dropdown-container:hover .dropdown {
+            display: block;
+        }
+
+        
+        .carousel-inner img {
+            width: 100%;
+            height: 60vh; /* Adjust height as needed */
+            object-fit: cover;
+        }
+        .feature, .service, .product {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature i, .service i, .product i {
+            font-size: 40px;
+            color: #F500E6;
+            margin-bottom: 10px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .section-titlee {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        p
+        {
+            font-size: 20px;
+            font-family: "Kalam", cursive;
+        }
+        .left-aligned-menu 
+        {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+        }
+
+
+        .left-aligned-menu .logo 
+        {
+            margin-right: auto;
+        }
+
+        .left-aligned-menu .main-link:after 
+        {
+            display: none; /* Oculta la flecha después del texto del enlace principal */
+        }
+        h5
+        {
+            color: #F500E6;
+        }
+
+        /*Para las tortas cuerpo*/
+
+        .producto {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.precio {
+    font-size: 1.2em;
+    color: #ff5733;
+    font-weight: bold;
+}
+
+.ordenar {
+    margin-bottom: 20px;
+    text-align: center;
+}
+        
+        /* footer*/
+        .footer {
+            background-color: #F500E6;
+            color: #fff;
+            padding: 40px 0;
+        }
+        .footer h4 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-icons a {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .footer .social-icons a i {
+            color: #fff;
+        }
+        .footer .social-icons a i:hover {
+            color: #ffd700;
+        }
+        .footer .contact-info {
+            margin-bottom: 20px;
+        }
+        .footer .secure-shopping img {
+            width: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <!-- Menú derecho -->
+        <div class="right-menu">
+            <br><br>
+            
+        </div>
+    </div>
+
+    <!--         CABECERA         -->
+    <!-- Menú de navegación -->
+
+    <nav class="left-aligned-menu">
+        <!-- Logotipo -->
+        <div class="logo">
+            <img src="img/logomey.png" alt="Don Pastel">
+        </div>
+        <div class="dropdown-container">
+            <a href="index.html" class="main-link"><h5>Tortas D´ Meyli</h5></a>
+        </div>
+        <!-- Menús desplegables -->
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>TORTAS</h5></a>
+            <div class="dropdown">
+                <a href="tortas.html">Tortas Variadas</a>
+                <a href="tortasdemeyli.html">Tortas D´ Meyli</a>
+                
+            </div>
+        </div>
+    
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>TORTAS SALUDABLES</h5></a>
+            <div class="dropdown">
+                <a href="tortasfrutoseco.html">Tortas de Frutos Secos</a>
+                <a href="tortafruta.html">Tortas de Frutas</a>
+                
+            </div>
+        </div>
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>BOCADITOS</h5></a>
+            <div class="dropdown">
+                <a href="bocadodulce.html">Bocaditos Dulces</a>
+                <a href="bocadosalado.html">Bocaditos Salados</a>
+                
+                
+            </div>
+        </div>
+        
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>MÁS INFORMACIÓN</h5></a>
+            <div class="dropdown">
+                <a href="historia.html">Historia De Tortas D´ Meyli</a>
+                <a href="contactanos.html">Contactanos</a>
+                <a href="poli.html">Politica de Privacidad</a>
+            </div>
+        </div>
+        <!-- Ícono de búsqueda -->
+        <a href="#"><i class="fas fa-search"></i></a>
+    </nav>
+    
+
+        <!-- Controles -->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <br>
+
+    <!--cuerpo-->
+
+    <div class="container">
+        <section class="productos">
+            <div class="row">
+                <div class="col-12 ordenar">
+                    <label for="ordenar-por">Ordenar por:</label>
+                    <select id="ordenar-por" class="form-control w-auto d-inline-block">
+                        <option value="predeterminado">Predeterminado</option>
+                        <option value="precio-bajo-alto">Precio: Bajo a alto</option>
+                        <option value="precio-alto-bajo">Precio: Alto a bajo</option>
+                        <option value="popularidad">Popularidad</option>
+                        <option value="ultimo-agregar">Último agregado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row lista-productos" id="lista-productos">
+                <div class="col-md-4 col-sm-6 producto" data-precio="55.00" data-popularidad="5">
+                    <img src="img/original1.jpg" alt="Tarta de Fresa">
+                    <h2>Torta Princesa</h2>
+                    <p>Crujiente base de masa brisa rellena de crema pastelera y fresas frescas.</p>
+                    <span class="precio">S/55.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="69.00" data-popularidad="10">
+                    <img src="img/original2.jpg" alt="Pastel Mouse Tres Chocolates">
+                    <h2>Pastel Mouse Tres Chocolates</h2>
+                    <p>Delicioso pastel de mousse de tres chocolates con cobertura de chocolate.</p>
+                    <span class="precio">S/69.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="69.00" data-popularidad="8">
+                    <img src="img/original3.jpg" alt="Torta de Chocolate">
+                    <h2>Pastel Cheesecake</h2>
+                    <p>Clásico cheesecake de queso crema con base de galleta y cobertura de frutos rojos.</p>
+                    <span class="precio">S/69.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="50.00" data-popularidad="7">
+                    <img src="img/original7.jpg" alt="Torta de Chocolate">
+                    <h2>Torta de Chocolate</h2>
+                    <p>Deliciosa torta de chocolate con capas de crema de chocolate y ganache.</p>
+                    <span class="precio">S/50.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="45.00" data-popularidad="6">
+                    <img src="img/original8.jpg" alt="Torta de Vainilla">
+                    <h2>Torta de Vainilla</h2>
+                    <p>Clásica torta de vainilla con frosting de crema de mantequilla.</p>
+                    <span class="precio">S/45.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="60.00" data-popularidad="9">
+                    <img src="img/original9.jpg" alt="Torta de Limón">
+                    <h2>Torta de Limón</h2>
+                    <p>Refrescante torta de limón con relleno de curd de limón y merengue.</p>
+                    <span class="precio">S/60.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="70.00" data-popularidad="8">
+                    <img src="img/original6.jpg" alt="Torta de Zanahoria">
+                    <h2>Torta de Zanahoria</h2>
+                    <p>Deliciosa torta de zanahoria con frosting de queso crema.</p>
+                    <span class="precio">S/70.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="80.00" data-popularidad="7">
+                    <img src="img/original4.jpg" alt="Torta de Naranja">
+                    <h2>Torta de Naranja</h2>
+                    <p>Torta esponjosa de naranja con glaseado de cítricos.</p>
+                    <span class="precio">S/80.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="85.00" data-popularidad="9">
+                    <img src="img/original10.jpg" alt="Torta Red Velvet">
+                    <h2>Torta Red Velvet</h2>
+                    <p>Clásica torta Red Velvet con frosting de queso crema.</p>
+                    <span class="precio">S/85.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="95.00" data-popularidad="10">
+                    <img src="img/original11.jpg" alt="Torta Tiramisu">
+                    <h2>Torta Tiramisu</h2>
+                    <p>Deliciosa torta tiramisu con capas de bizcocho y crema de mascarpone.</p>
+                    <span class="precio">S/95.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="50.00" data-popularidad="8">
+                    <img src="img/original12.jpg" alt="Torta de Coco">
+                    <h2>Torta de Coco</h2>
+                    <p>Esponjosa torta de coco con frosting de crema de coco.</p>
+                    <span class="precio">S/50.00</span>
+                </div>
+                <div class="col-md-4 col-sm-6 producto" data-precio="55.00" data-popularidad="7">
+                    <img src="img/original13.jpg" alt="Torta de Almendra">
+                    <h2>Torta de Almendra</h2>
+                    <p>Rica torta de almendra con frosting de mantequilla de almendra.</p>
+                    <span class="precio">S/55.00</span>
+                </div>
+                
+                
+            </div>
+        </section>
+    </div>
+    <script>
+        document.getElementById('ordenar-por').addEventListener('change', function() {
+            const ordenarPor = this.value;
+            const productos = Array.from(document.querySelectorAll('.producto'));
+            const contenedorProductos = document.getElementById('lista-productos');
+
+            productos.sort((a, b) => {
+                switch (ordenarPor) {
+                    case 'precio-bajo-alto':
+                        return parseFloat(a.dataset.precio) - parseFloat(b.dataset.precio);
+                    case 'precio-alto-bajo':
+                        return parseFloat(b.dataset.precio) - parseFloat(a.dataset.precio);
+                    case 'popularidad':
+                        return parseFloat(b.dataset.popularidad) - parseFloat(a.dataset.popularidad);
+                    case 'ultimo-agregar':
+                        return productos.indexOf(a) - productos.indexOf(b);  
+                    case 'predeterminado':
+                    default:
+                        return 0; 
+                }
+            });
+
+            productos.forEach(producto => {
+                contenedorProductos.appendChild(producto);
+            });
+        });
+    </script>
+
+    <!-- footer-->
+
+    <footer class="footer text-center text-md-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>ACERCA DE NOSOTROS</h4>
+                    <p>Somos una pastelería con conceptos y sabores únicos buscando siempre el crear productos novedosos y con calidad para todos nuestros clientes.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>HORARIO DE TRABAJO</h4>
+                    <p>
+                        AV SANCHEZ CERRO 1361, Piura, Peru, 073<br>
+                        Lunes a Domingo 9:00 AM – 8:30 PM<br><br>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h4>SÍGUENOS</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100079211840375&mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Ftortasdmeylin%3Figsh%3Dczd3Ymhqd2l1ZjF1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR1lZblDzYyM41jr6MDgHQhFCLqgXxQr3pjvjI717uFFwD_yjLHCx75E83k_aem_AWZT1Mm5uaqlFf04ST2X4_pyO733Z2OmDCqZo1ie77SLlPgZyCJxPa7rf6gJ_anToVc-KTueqyqIdO5wsiVclbPz&h=AT3OBi2CvFjuxDHs065ObAq0bM9Gfa0rMT8e349jlQNMFbrRcPILj7Q3UE4uzkdgrNVT8m6gTolTQzwinyzo_7czXsPVDqMPooTKIgEmlrZ0EO6s8pcFcubp8tFSwcr2nLSUJw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <p>Teléfono: 962 110 953<br>
+                            contactcenter@pasteleriameylin.com<br>
+                        <a href="https://linktr.ee/donpastel">https://linktr.ee/donpastel</a></p>
+                    </div>
+                    <div class="secure-shopping">
+                        <img src="img/comprasegura.png" alt="Compra 100% Segura">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-3">
+            <p>&copy; 2024 Tortas D´ Meyli. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

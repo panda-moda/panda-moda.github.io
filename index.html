@@ -1,227 +1,754 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inteligencia Artificial</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Estilos personalizados -->
+    <title>Tortas D´Meyli</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset CSS básico */
-        * {
+        body {
+            font-family: "Jaini", system-ui;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Estilo del cuerpo */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(to right, #2a4983, #99baf2);
-            color: #333;
-        }
-
-        /* Encabezado con degradado azul y título a la izquierda */
-        header {
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            color: #ffffff;
-            padding: 1rem 2rem;
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        /* Secciones */
-        main {
-            padding: 2rem;
-        }
-
-        section {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        section h2 {
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        /* Imágenes */
-        .section-images {
+        .top-bar {
+            background-color: #F500E6;
+            color: white;
+            padding: 5px 20px;
             display: flex;
-            justify-content: space-around;
-            margin-top: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
         }
-
-        .section-images img {
-            max-width: 30%;
-            height: auto;
-            margin-bottom: 1rem;
+        .top-bar .contact-info {
+            display: flex;
+            align-items: center;
         }
-
-        /* Estilos de pie de página */
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background: #333;
-            color: #fff;
+        .top-bar .contact-info i {
+            margin-right: 5px;
         }
-
-        /*imagen grande principal*/
-        .main-image {
+        .top-bar .right-menu {
+            display: flex;
+            align-items: center;
+        }
+        .top-bar .right-menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .top-bar .right-menu .dropdown-container {
             position: relative;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            text-align: center;
         }
-
-        .main-image img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
+        .top-bar .right-menu .dropdown-container .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #3c2a2a;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            margin-top: 5px;
+        }
+        .top-bar .right-menu .dropdown-container:hover .dropdown {
             display: block;
         }
-
-        .text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            /* Tamaño más grande */
-            font-weight: bold;
-            /* Texto más grueso */
-            color: #fff;
-            /* Color blanco */
+        .top-bar .right-menu .dropdown-container .dropdown a {
+            padding: 10px 15px;
+            display: block;
+            color: white;
+            text-decoration: none;
         }
+        .top-bar .right-menu .dropdown-container .dropdown a:hover {
+            background-color: #7f4c4c;
+        }
+        header {
+            background-color: #ffffff;
+            color: #130712;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+        .logo img {
+            height: 120px; /* Ajusta la altura del logo */
+            width: 180px; /* Mantén la proporción de la imagen */
+        }
+        nav {
+            background-color: #ffffff;
+            color: #5a2e2e;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a {
+            color: #F500E6;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            position: relative;
+        }
+        nav a:hover {
+            background-color: #f5f5f5;
+        }
+        nav .main-link:after {
+            content: "\f0d7"; /* Font Awesome down arrow icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+        }
+        nav .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 200px; /* Adjust width as needed */
+        }
+        nav .dropdown a {
+            padding: 12px 16px;
+            display: block;
+            color: #5a2e2e;
+            text-decoration: none;
+        }
+        nav .dropdown a:hover {
+            background-color: #f5f5f5;
+        }
+        nav .dropdown-container:hover .dropdown {
+            display: block;
+        }
+        .carousel-inner img {
+            width: 100%;
+            height: 60vh; /* Adjust height as needed */
+            object-fit: cover;
+        }
+        .feature, .service, .product {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature i, .service i, .product i {
+            font-size: 40px;
+            color: #F500E6;
+            margin-bottom: 10px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .section-titlee {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        p
+        {
+            font-size: 20px;
+            font-family: "Kalam", cursive;
+        }
+        .left-aligned-menu 
+        {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+        }
+
+
+        .left-aligned-menu .logo 
+        {
+            margin-right: auto;
+        }
+
+        .left-aligned-menu .main-link:after 
+        {
+            display: none; /* Oculta la flecha después del texto del enlace principal */
+        }
+        h5
+        {
+            color: #F500E6;
+        }
+
+        /* Cambia el color de los títulos a rosado */
+        .feature h3,
+        .service h4,
+        .section-titlee h2,
+        .section-title h2,
+        .product h2 
+        {
+            color: #F500E6;
+        }
+
+        .product-item {
+    position: relative; /* Posición relativa para elementos hijos */
+    overflow: hidden; /* Oculta el contenido que se sale */
+    border: 4px solid #F500E6; /* Grosor y color del borde */
+    padding: 10px; /* Espaciado interno */
+    transition: border-color 0.3s ease, transform 0.3s ease; /* Transiciones */
+}
+
+.product-item:hover {
+    border-color: #7F00FF; /* Nuevo color del borde al pasar el cursor */
+    transform: scale(1.05); /* Escala ligeramente la imagen al pasar el cursor */
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: transform 0.3s ease; /* Transición para la transformación de la imagen */
+}
+
+.zoom-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    border-radius: 50%; /* Bordes redondeados */
+    padding: 5px;
+    color: #F500E6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.zoom-icon:hover {
+    background-color: rgba(255, 255, 255, 1); /* Cambio de color al pasar el cursor */
+    color: #7F00FF; /* Cambio de color al pasar el cursor */
+}
+
+.modal-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+    overflow: auto;
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #F500E6;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #7F00FF;
+}
+
+/*producto del mes*/
+
+.producto-del-mes {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+            margin: 0 auto; /* Centra el contenido horizontalmente */
+            margin-bottom: 20px; /* Espacio inferior entre los recuadros */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+
+        .informacion {
+            flex: 1; /* El contenido de información ocupa todo el espacio disponible */
+            margin-left: 20px; /* Espacio entre la imagen y la información */
+        }
+
+        .imagen img {
+            max-width: 200px; /* Ajusta el tamaño máximo de la imagen según tus necesidades */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .precio {
+            font-size: 1.2em; /* Tamaño de fuente del precio */
+            font-weight: bold;
+            color: #007bff; /* Color del precio */
+            margin-bottom: 10px;
+        }
+
+        .btn-comprar {
+            background-color: #007bff; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: #0056b3; /* Cambio de color al pasar el cursor */
+        }
+
+        /* footer*/
+        .footer {
+            background-color: #F500E6;
+            color: #fff;
+            padding: 40px 0;
+        }
+        .footer h4 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-icons a {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .footer .social-icons a i {
+            color: #fff;
+        }
+        .footer .social-icons a i:hover {
+            color: #ffd700;
+        }
+        .footer .contact-info {
+            margin-bottom: 20px;
+        }
+        .footer .secure-shopping img {
+            width: 100px;
+        }
+
+
     </style>
 </head>
-
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark"
-            style="background: linear-gradient(to right, #2f72f9, #2637f9);">
-            <a class="navbar-brand">Inteligencia Artificial</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#que-es"><i class="fa fa-question-circle"></i> ¿Qué es?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#aplicaciones"><i class="fa fa-cogs"></i> Aplicaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#impacto"><i class="fa fa-globe"></i> Impacto en la Sociedad</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#vida-cotidiana"><i class="fa fa-home"></i> IA en la Vida
-                            Cotidiana</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#alexa"><i class="fa fa-microphone"></i> Alexa</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="alexa01.html"><i class="fa fa-microphone"></i> Simulador</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- Imagen principal con texto superpuesto -->
-    <div class="main-image">
-        <img src="img/ia3.jpg" alt="Inteligencia Artificial">
-        <div class="text-overlay">INTELIGENCIA ARTIFICIAL</div>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <!-- Menú derecho -->
+        <div class="right-menu">
+            <br><br>
+            
+        </div>
     </div>
-    <main>
-        <section id="que-es">
-            <h2>¿Qué es la IA?</h2>
-            <p>La Inteligencia Artificial (IA) es la simulación de procesos de inteligencia humana por parte de sistemas
-                informáticos. Estos procesos incluyen el aprendizaje (la adquisición de información y reglas para
-                usarla), el razonamiento (usar reglas para alcanzar conclusiones aproximadas o definidas) y la
-                autocorrección. Las tecnologías específicas de IA incluyen sistemas expertos, procesamiento del lenguaje
-                natural (NLP), reconocimiento de voz y visión artificial.</p>
-            <div class="section-images">
-                <img src="img/ia01.jpeg" alt="Imagen IA 1">
-                <img src="img/ia02.jpeg" alt="Imagen IA 2">
-                <img src="img/iaportada.jpeg" alt="Imagen IA 3">
-            </div>
-        </section>
 
-        <section id="aplicaciones">
-            <h2>Aplicaciones de la IA</h2>
-            <p>La IA se utiliza en una variedad de campos como la medicina (diagnóstico y tratamiento), la finanza
-                (análisis predictivo y automatización), el transporte (vehículos autónomos), la industria (robots de
-                fabricación), y muchos más. En el comercio, los sistemas de recomendación impulsados por IA mejoran la
-                experiencia del cliente al sugerir productos basados en sus preferencias.</p>
-            <div class="section-images">
-                <img src="img/ia04.jpeg" alt="Imagen Aplicaciones 1">
-                <img src="img/ia05.jpeg" alt="Imagen Aplicaciones 2">
-                <img src="img/ia06.jpeg" alt="Imagen Aplicaciones 3">
-            </div>
-        </section>
+    <!--         CABECERA         -->
+    <!-- Menú de navegación -->
 
-        <section id="impacto">
-            <h2>Impacto en la Sociedad</h2>
-            <p>La IA tiene un impacto profundo en la forma en que vivimos y trabajamos. Puede aumentar la eficiencia y
-                la productividad, pero también plantea preocupaciones sobre la privacidad, el desempleo y la ética. El
-                debate sobre el impacto de la IA en la sociedad incluye cuestiones sobre la responsabilidad en la toma
-                de decisiones y la necesidad de regulaciones para asegurar su uso ético y justo.</p>
-            <div class="section-images">
-                <img src="img/ia07.jpg" alt="Imagen Impacto 1">
-                <img src="img/ia08.jpg" alt="Imagen Impacto 2">
-                <img src="img/ia09.jpg" alt="Imagen Impacto 3">
+    <nav class="left-aligned-menu">
+        <!-- Logotipo -->
+        <div class="logo">
+            <img src="img/logomey.png" alt="Don Pastel">
+        </div>
+        <!-- Menús desplegables -->
+        <div class="dropdown-container">
+            <a href="index.html" class="main-link"><h5>Tortas D´ Meyli</h5></a>
+        </div>
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>TORTAS</h5></a>
+            <div class="dropdown">
+                <a href="tortas.html">Tortas Variadas</a>
+                <a href="tortasdemeyli.html">Tortas D´ Meyli</a>
+                
             </div>
-        </section>
-
-        <section id="vida-cotidiana">
-            <h2>IA en la Vida Cotidiana</h2>
-            <p>Desde asistentes virtuales como Siri y Google Assistant hasta recomendaciones personalizadas en
-                plataformas de streaming y compras, la IA está presente en muchos aspectos de nuestra vida diaria. Los
-                algoritmos de IA ayudan a mejorar la eficiencia en la gestión del tiempo, la organización de tareas y la
-                personalización de la experiencia del usuario en aplicaciones y servicios online.</p>
-            <div class="section-images">
-                <img src="img/ia010.jpeg" alt="Imagen Vida Cotidiana 1">
-                <img src="img/ia011.jpeg" alt="Imagen Vida Cotidiana 2">
-                <img src="img/ia012.jpg" alt="Imagen Vida Cotidiana 3">
+        </div>
+    
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>TORTAS SALUDABLES</h5></a>
+            <div class="dropdown">
+                <a href="tortasfrutoseco.html">Tortas de Frutos Secos</a>
+               
+                <a href="#">Tortas de Frutas</a>
+                
             </div>
-        </section>
-
-        <section id="alexa">
-            <h2>Alexa</h2>
-            <p>Alexa es un asistente virtual desarrollado por Amazon que utiliza IA para responder preguntas, reproducir
-                música, configurar alarmas, controlar dispositivos inteligentes del hogar y mucho más. Alexa se activa
-                con comandos de voz y aprende continuamente de las interacciones con los usuarios para mejorar sus
-                respuestas y capacidades.</p>
-            <div class="section-images">
-                <img src="img/alexa000.jpg" alt="Imagen Alexa 1">
-                <img src="img/alexa0001.jpeg" alt="Imagen Alexa 2">
-                <img src="img/alexa0003.jpeg" alt="Imagen Alexa 3">
+        </div>
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>BOCADITOS</h5></a>
+            <div class="dropdown">
+                <a href="bocadodulce.html">Bocaditos Dulces</a>
+                <a href="bocadosalado.html">Bocaditos Salados</a>
+                
+                
             </div>
-        </section>
-    </main>
+        </div>
+        
+        <div class="dropdown-container">
+            <a href="#" class="main-link"><h5>MÁS INFORMACIÓN</h5></a>
+            <div class="dropdown">
+                <a href="historia.html">Historia De Tortas D´ Meyli</a>
+                <a href="contactanos.html">Contactanos</a>
+                <a href="poli.html">Politica de Privacidad</a>
+            </div>
+        </div>
+        <!-- Ícono de búsqueda -->
+        <a href="#"><i class="fas fa-search"></i></a>
+    </nav>
+    
 
-    <footer>
-        <p>2024 - Página sobre Inteligencia Artificial &copy; Derechos Reservados Luz Silupú</p>
+    <!-- Carrusel de imágenes -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <!-- Indicadores -->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        </ol>
+        <!-- Contenedor de las imágenes -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/carrucel1.jpg" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="img/carrucel2.jpg" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="img/carrucel3.jpg" class="d-block w-100" alt="Imagen 3">
+            </div>
+            <div class="carousel-item">
+                <img src="img/carrucel4.jpg" class="d-block w-100" alt="Imagen 4">
+            </div>
+            <div class="carousel-item">
+                <img src="img/carrucel5.jpg" class="d-block w-100" alt="Imagen 5">
+            </div>
+            <div class  class="carousel-item">
+                <img src="img/carrucel6.jpg" class="d-block w-100" alt="Imagen 6">
+            </div>
+        </div>
+        <!-- Controles -->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Sección de características -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 feature">
+                <i class="fas fa-carrot"></i>
+                <h3>INGREDIENTES FRESCOS</h3>
+                <p>Todos nuestros productos están hechos con ingredientes de la mejor calidad y productos frescos garantizados.</p>
+                <!-- Carrusel de imágenes -->
+                <div id="carouselIngredientesFrescos" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <!-- Contenedor de las imágenes -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/fruta1.jpg" class="d-block w-100" alt="Ingredientes Frescos 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/fruta2.jpg" class="d-block w-100" alt="Ingredientes Frescos 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/fruta3.jpg" class="d-block w-100" alt="Ingredientes Frescos 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/fruta4.jpg" class="d-block w-100" alt="Ingredientes Frescos 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/fruta5.jpg" class="d-block w-100" alt="Ingredientes Frescos 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-heart"></i>
+                <h3>HORNEADO CON CARIÑO</h3>
+                <p>Nos apasiona la cocción. Cada uno de nuestros artículos hechos a mano son cuidadosamente horneados con amor.</p>
+                
+                <!-- Carrusel de imágenes -->
+                <div id="carouselHorneadoConAmor" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <!-- Contenedor de las imágenes -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/horne1.jpg" class="d-block w-100" alt="Horneado con Amor 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/horne2.jpg" class="d-block w-100" alt="Horneado con Amor 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/horne3.jpg" class="d-block w-100" alt="Horneado con Amor 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/horne4.jpg" class="d-block w-100" alt="Horneado con Amor 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/horne5.jpg" class="d-block w-100" alt="Horneado con Amor 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-clock"></i>
+                <h3>EL TIEMPO DE ENTREGA</h3>
+                <p>Somos muy puntuales y prometemos entregar productos frescos a tiempo a cada cliente respectivo.</p>
+                
+                <!-- Carrusel de imágenes -->
+                <div id="carouselTiempoEntrega" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <!-- Contenedor de las imágenes -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/entrega1.jpeg" class="d-block w-100" alt="Tiempo de Entrega 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/entrega2.png" class="d-block w-100" alt="Tiempo de Entrega 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/entrega3.jpg" class="d-block w-100" alt="Tiempo de Entrega 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/entrega4.jpeg" class="d-block w-100" alt="Tiempo de Entrega 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/entrega5.jpeg" class="d-block w-100" alt="Tiempo de Entrega 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de servicios -->
+    <div class="container">
+        <div class="section-titlee">
+            <h2>NUESTROS SERVICIOS</h2>
+            <p>Hemos implementado una variedad de productos para el deleite de nuestros clientes!</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3 service">
+                <i class="fas fa-shipping-fast"></i>
+                <h4>Servicio de pedidos</h4>
+                <p>Servicio de pedidos rápidos de productos disponibles para el distrito de San Miguel, Pueblo Libre y Magdalena.</p>
+            </div>
+            <div class="col-md-3 service">
+                <i class="fas fa-birthday-cake"></i>
+                <h4>Variedad de tortas</h4>
+                <p>¡Variedad de tortas únicas y de calidad óptima para que disfrute en sus eventos y productos a gusto del cliente!</p>
+            </div>
+            <div class="col-md-3 service">
+                <i class="fas fa-cookie"></i>
+                <h4>Bocaditos</h4>
+                <p>Una gran variedad de bocaditos dulces y salados que solo hacemos a pedido, garantizando frescura y calidad!</p>
+            </div>
+            <div class="col-md-3 service">
+                <i class="fas fa-user-tie"></i>
+                <h4>Personal calificado</h4>
+                <p>Nuestro equipo está altamente capacitado para ofrecerte la mejor calidad y presentación en cada producto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de tortas variadas -->
+    <div class="container">
+        <div class="section-title">
+            <h2>TORTAS VARIADAS</h2>
+            <p>Tortas de Sabores y Presentaciones Variadas</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/vistor4.JPG" alt="Torta 1">
+                    <h5>Torta Tres leches con cubierta de fresa</h5>
+                    <p>S/69.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/visor2.png" alt="Torta 2">
+                    <h5>Torta de chocolate con cobierta de crema</h5>
+                    <p>S/59.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/visor.png" alt="Torta 3">
+                    <h5 >Torta de fresa y crema pastelera</h5>
+                    <p>S/49.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-4">
+            <a href="tortas.html" class="btn-comprar btn btn-primary">VER CATALOGO</a>
+        </div>
+    </div>
+
+     <!-- Sección de tortas de meyli -->
+     <div class="container">
+        <div class="section-title">
+            <h2>TORTAS D´ MEYLI</h2>
+            <p>Tortas Originales que Identifican a Tortas D´ Meyli</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/original1.jpg" alt="Torta 1">
+                    <h5>Torta Princesa</h5>
+                    <p>S/55.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/original2.jpg" alt="Torta 2">
+                    <h5>Torta Minnie</h5>
+                    <p>S/66.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/original3.jpg" alt="Torta 3">
+                    <h5 >Torta Bebé</h5>
+                    <p>S/65.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Sección de tortas saludables -->
+     <div class="container">
+        <div class="section-title">
+            <h2>TORTAS SALUDABLES</h2>
+            <p>Tortas Preparadas especialmente para personas que buscan alternativas de postres más saludables, especialmente aquellos que están tratando de controlar su ingesta de azúcar. </p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/torti1.JPG" alt="Torta 1">
+                    <h5>Torta de vainilla y fresa</h5>
+                    <p>S/40.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/diabeti2.JPG" alt="Torta 2">
+                    <h5>Chifon de vainilla</h5>
+                    <p>S/30.00</p>
+                </div>
+            </div>
+            <div class="col-md-4 product">
+                <div class="product-item">
+                    <img src="img/diabe1.JPG" alt="Torta 3">
+                    <h5 >Torta de vainilla con frutos rojos</h5>
+                    <p>S/45.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!---- pantalla emergente -->
+   <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <p>Recuerde que Su pedido Realizado se Procedera a entregar dentro de las 48 horas.</p>
+    </div>
+    </div>
+    <script>
+        // Función para mostrar el modal automáticamente al cargar la página
+        window.onload = function() {
+            mostrarModal();
+        };
+
+        function mostrarModal() {
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Cerrar el modal si el usuario hace clic fuera de él
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                cerrarModal();
+            }
+        }
+    </script>
+    
+
+    <!-- footer-->
+
+    <footer class="footer text-center text-md-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>ACERCA DE NOSOTROS</h4>
+                    <p>Somos una pastelería con conceptos y sabores únicos buscando siempre el crear productos novedosos y con calidad para todos nuestros clientes.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>HORARIO DE TRABAJO</h4>
+                    <p>
+                        AV SANCHEZ CERRO 1361, Piura, Peru, 073<br>
+                        Lunes a Domingo 9:00 AM – 8:30 PM<br><br>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h4>SÍGUENOS</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100079211840375&mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Ftortasdmeylin%3Figsh%3Dczd3Ymhqd2l1ZjF1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR1lZblDzYyM41jr6MDgHQhFCLqgXxQr3pjvjI717uFFwD_yjLHCx75E83k_aem_AWZT1Mm5uaqlFf04ST2X4_pyO733Z2OmDCqZo1ie77SLlPgZyCJxPa7rf6gJ_anToVc-KTueqyqIdO5wsiVclbPz&h=AT3OBi2CvFjuxDHs065ObAq0bM9Gfa0rMT8e349jlQNMFbrRcPILj7Q3UE4uzkdgrNVT8m6gTolTQzwinyzo_7czXsPVDqMPooTKIgEmlrZ0EO6s8pcFcubp8tFSwcr2nLSUJw"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <p>Teléfono: 962 110 953<br>
+                            contactcenter@pasteleriameylin.com<br>
+                        <a href="https://linktr.ee/donpastel">https://linktr.ee/donpastel</a></p>
+                    </div>
+                    <div class="secure-shopping">
+                        <img src="img/comprasegura.png" alt="Compra 100% Segura">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-3">
+            <p>&copy; 2024 Tortas D´ Meyli. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS y dependencias -->
+
+    <!-- Scripts de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
+
